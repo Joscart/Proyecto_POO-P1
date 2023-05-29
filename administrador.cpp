@@ -165,6 +165,7 @@ void Administrador::factura()
         imprimirTicket(cine->getBoletoNumBoletos());
         cine->eliminarUltimoBoleto();
     }
+    cine->setNumBoletos(0);
     cout << setw(10) << right << "Total: " << setw(68) << setprecision(4) << cine->getBoletoCosto()*tickets << setw(2) << " $" << endl;
     cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ');
 }

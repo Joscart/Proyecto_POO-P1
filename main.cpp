@@ -7,42 +7,54 @@ using namespace std;
 
 int main()
 {
-
-    cout << "hola mundo" << endl;
-
     Administrador cine;
 
     cine.dataTest();
 
-    cine.Instrucciones();
+    string submenu;
+    int menu = -1;
+    do{
+        cout<<"\nMenu de Opciones\n\n";
+        cout<<"Elija su opcion: \n"
+                "VenderBoleto[1] \n"
+                "MostrarCartelera[2] \n"
+                "Instruciones[3] \n"
+                "Salir[4]\n";
 
-    Pausar();
-    limpiar_pantalla();
+        do{
+            cout << "Ingrese su opcion: ";
+            getline(cin>>ws,submenu);
 
-    cine.mostrarCartelera();
+            if(!cine.validarNumero(submenu)){
+                cout << "Opcion invalida" << endl;
+            }else{
+                menu = stoi(submenu);
+                if(menu<=0||menu>4)
+                    cout << "Opcion invalida" << endl;
+            }
+        }while(menu<=0||menu>4);
 
-    Pausar();
-    limpiar_pantalla();
 
-    cine.venderBoleto();
-    limpiar_pantalla();
+        switch(menu){
+        case 1:
+            cine.venderBoleto();
+//            limpiar_pantalla();
 
-    cine.factura();
+//            cine.factura();
+            break;
+        case 2:
+            cine.mostrarCartelera();
+            break;
+        case 3:
+            cine.Instrucciones();
+            break;
+        case 4:
+            cout << "Gracias por usar mi programa" << endl;
+        }
 
-    Pausar();
-    limpiar_pantalla();
-
-    cine.venderBoleto();
-
-    Pausar();
-    limpiar_pantalla();
-
-    cine.venderBoleto();
-
-    Pausar();
-    limpiar_pantalla();
-
-    cout << "hola mundo" << endl;
+        Pausar();
+        limpiar_pantalla();
+    }while(menu!=4);
 
     return 0;
 }
