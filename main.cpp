@@ -38,9 +38,8 @@ int main()
         switch(menu){
         case 1:
             cine.venderBoleto();
-//            limpiar_pantalla();
-
-//            cine.factura();
+            limpiar_pantalla();
+            cine.factura();
             break;
         case 2:
             cine.mostrarCartelera();
