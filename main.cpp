@@ -25,6 +25,9 @@ int main()
     limpiar_pantalla();
 
     cine.venderBoleto();
+    limpiar_pantalla();
+
+    cine.factura();
 
     Pausar();
     limpiar_pantalla();

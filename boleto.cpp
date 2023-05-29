@@ -63,6 +63,8 @@ void Boleto::setBoleto(int id, Pelicula *peli, Sala *sala, int fila, int columna
 
     this->horario = peli->getHorarios()[horario-1];
 
+    sala->setId(peli->getSalaId());
+
     char aux;
 
     switch(fila){

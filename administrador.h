@@ -19,6 +19,8 @@ public:
     void Instrucciones();
     void mostrarCartelera();
     void venderBoleto();
+    void factura();
+    void imprimirTicket(int id);
     void mostrarAsientos(int salaId);
     bool validarNumero(const string &dato);
 };

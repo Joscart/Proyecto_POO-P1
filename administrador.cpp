@@ -91,9 +91,12 @@ void Administrador::venderBoleto()
         return;
     }
 
+
+    mostrarAsientos(cine->getPeliculaSalaID(peliID));
     for(int i=0;i<numBoletos;i++){
+
         do{
-            mostrarAsientos(cine->getPeliculaSalaID(peliID));
+
             do{
                 cout << "Ingrese Fila:";
                 getline(cin>>ws,aux);
@@ -138,6 +141,8 @@ void Administrador::venderBoleto()
             if(cine->addBoletos(peliID,fila,columna,horario)){
                 cout << "\nBoleto comprado :D\n";
                 cout << "Id asiento: " << cine->getBoletoAsiento(cine->getNumBoletos()) << endl;
+                imprimirTicket(cine->getBoletoNumBoletos());
+                mostrarAsientos(cine->getPeliculaSalaID(peliID));
                 break;
             }else{
                 cout << "\nEspacio ocupado :C\n";
@@ -146,8 +151,45 @@ void Administrador::venderBoleto()
         }while(1);
         //mostrarAsientos(cine->getPeliculaSalaID(peliID));
 
-        cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ') << endl;
+        //cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ') << endl;
     }
+}
+
+void Administrador::factura()
+{
+    cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ');
+    cout << setw(20) << "" << setw(60) << cine->getNombre() << endl;
+    cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ');
+    int tickets = cine->getBoletoNumBoletos();
+    for(int i=0;i<tickets;i++){
+        imprimirTicket(cine->getBoletoNumBoletos());
+        cine->eliminarUltimoBoleto();
+    }
+    cout << setw(10) << right << "Total: " << setw(68) << setprecision(4) << cine->getBoletoCosto()*tickets << setw(2) << " $" << endl;
+    cout << setw(1) << "<" << setw(78) << setfill('=') << "" << setw(1) << ">" << "\n" << setfill(' ');
+}
+
+void Administrador::imprimirTicket(int id)
+{
+    cout << setw(1) << "┌" << setw(78) << setfill('-') << "" << setw(1) << "┐" << "\n" << setfill(' ');
+    for(int i=1;i<=9;i++){
+
+        cout << setw(1) << "|";
+
+        switch(i){
+        case 1:cout << setw(19) << "" << setw(59) << cine->getNombre();break;
+        case 2:cout << setw(29) << "" << setw(49) << "Boleto N# "+to_string(id);break;
+        case 3:cout << setw(78) << "  " + cine->getBoletoPelicula(id);break;
+        case 5:cout << setw(78) << "  Sala: " + cine->getBoletoSala(id);break;
+        case 6:cout << setw(78) << "  Asiento: " + cine->getBoletoAsiento(id);break;
+        case 8:cout << setw(10) << "  Precio: " << setw(68) << setprecision(4) << cine->getBoletoCosto();break;
+        default:cout << setw(78) << "";
+        }
+
+        cout << setw(1) << "|" << "\n";
+
+    }
+    cout << setw(1) << "└" << setw(78) << setfill('-') << "" << setw(1) << "┘" << "\n" << setfill(' ') << endl;
 }
 
 void Administrador::mostrarAsientos(int salaId)

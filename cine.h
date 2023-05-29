@@ -1,7 +1,6 @@
 #ifndef CINE_H
 #define CINE_H
 
-//#include <string>
 #include <vector>
 #include "sala.h"
 #include "pelicula.h"
@@ -35,6 +34,9 @@ public:
     string getBoletoAsiento(int id);
     string getBoletoSala(int id);
     string getBoletoPelicula(int id);
+    float getBoletoCosto();
+    int getBoletoNumBoletos();
+    void eliminarUltimoBoleto();
 
     string getPeliculaID(int id);
     string getPeliculaNombre(int id);
@@ -45,7 +47,7 @@ public:
     int getPeliculaSalaID(int id);
 
     string getSalaID(int id);
-    vector<vector<bool> > getAsientos(int salaID);
+    //vector<vector<bool> > getAsientos(int salaID);
     bool getSalaPosAsiento(int salaID, int fila, int columna);
     //test
     int getSalaAsientoPosFila(int salaID, int fila, int columna);

@@ -22,6 +22,7 @@ bool Sala::asignarAsiento(int fila, int columna)
     }
 
     asientos.at(fila-1).at(columna-1).setOcupancia(true);
+    asientosDisponibles--;
     return asientos.at(fila-1).at(columna-1).getOcupancia();
 }
 

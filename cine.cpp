@@ -24,7 +24,7 @@ bool Cine::addBoletos(int peliculaID,int fila, int columna, int horario)
     boletos.push_back(new Boleto);
     boletos[numBoletos]->setBoleto(numBoletos+1, cartelera[peliculaID-1],salas[cartelera[peliculaID-1]->getSalaId()-1],fila,columna,horario);
 
-    numBoletos++;
+    numBoletos = boletos.size();
     return true;
 
 }
@@ -71,12 +71,27 @@ string Cine::getBoletoAsiento(int id)
 
 string Cine::getBoletoSala(int id)
 {
-    return to_string(boletos[id-1]->getSala()->getId() );
+    return to_string(boletos[id-1]->getSala()->getId());
 }
 
 string Cine::getBoletoPelicula(int id)
 {
     return boletos[id-1]->getPeli()->getTitulo() + " [" + boletos[id-1]->getHorario().printTiempo(2) + "]";
+}
+
+float Cine::getBoletoCosto()
+{
+    return boletos[0]->costoBoleto;
+}
+
+int Cine::getBoletoNumBoletos()
+{
+    return boletos.size();
+}
+
+void Cine::eliminarUltimoBoleto()
+{
+    boletos.pop_back();
 }
 
 string Cine::getPeliculaID(int id)
@@ -219,6 +234,7 @@ void Cine::setNumPeliculas(int newNumPeliculas)
 
 void Cine::dataTest()
 {
+    setNombre("Cine Local");
     setPelicula("El Rey Leon 1, el despertar",180,false,16,30);
     setPelicula("El Rey Leon 2, un nuevo inicio",180,false,13,30);
     setPelicula("El Rey Leon 3, la caida",200,false,14,00);
