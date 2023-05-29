@@ -13,7 +13,13 @@ void Administrador::dataTest()
 void Administrador::Instrucciones()
 {
     cout << right << setw(40) << "*-*-*-Instrucciones-*-*-*\n\n\n";
-    cout << "Hola Mundo :)\n";
+    cout << "Este programa basado en terminal, esta pensado para otorgar\n"
+            "la mayor rapidez al operador, por lo cual tenga en mente:\n\n"
+            "1) No se debe usar ninguna combinacion de teclas especiales ejemplo: \"crtl+c\"\n"
+            "2) Use principalmente el teclado numerico\n"
+            "3) Si encuentra cualquier error o fallo no dude en contactarme\n\n"
+            "info contacto:\n"
+            "jguallasaminc@est.ups.edu.ec\n";
 }
 
 void Administrador::mostrarCartelera()
